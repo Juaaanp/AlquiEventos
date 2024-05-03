@@ -10,6 +10,8 @@ public class Evento {
     private LocalDate fecha;
     private String direccion;
     private Localidad localidad;
+    private int capacidad;
+    private Ciudad ciudad;
 
     // Constructor vacío
     public Evento(){
@@ -17,7 +19,7 @@ public class Evento {
 
     //Constructor con argumentos.
     public Evento(String nombre, String descripcion, TipoEvento tipoEvento, String imagen, LocalDate fecha,
-            String direccion, Localidad localidad) {
+            String direccion, Localidad localidad, int capacidad, Ciudad ciudad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tipoEvento = tipoEvento;
@@ -25,6 +27,8 @@ public class Evento {
         this.fecha = fecha;
         this.direccion = direccion;
         this.localidad = localidad;
+        this.capacidad = capacidad;
+        this.ciudad = ciudad;
     }
 
     //Métodos gets y sets.
@@ -84,6 +88,24 @@ public class Evento {
         this.localidad = localidad;
     }
 
-    
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    //public double calcularRecaudacion(){
+
+    //}
 }
 

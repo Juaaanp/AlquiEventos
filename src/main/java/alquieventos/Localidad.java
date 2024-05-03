@@ -31,7 +31,9 @@ public class Localidad {
         this.capacidad = capacidad;
     }
     
-    
+    private void medirCapacidad(Compra compra){
+
+    }
     
     
 }

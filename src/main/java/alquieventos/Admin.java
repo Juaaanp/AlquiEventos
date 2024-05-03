@@ -1,5 +1,14 @@
 package alquieventos;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+
 public class Admin extends Persona {
+    private List<Evento> eventos = new ArrayList<>();
 
     //Constructor heredado.
     public Admin(String nombre, String cedula, String numTelefono, String email, String contraseña) {
@@ -15,16 +24,17 @@ public class Admin extends Persona {
 
     }
 
-    public void crearCupon(){
-
+    public Cupon crearCupon(LocalDate fechaEspecial, double porcentaje){
+        return new Cupon(porcentaje);
     }
 
     public void obtenerEstadisticas(){
 
     }
 
-    public void listarEventosMayorRecaudacion(){
+    //public Collection<Evento> listarEventosMayorRecaudacion(){
         
-    }
+      //  return eventos.stream()
+    //}
     
 }
