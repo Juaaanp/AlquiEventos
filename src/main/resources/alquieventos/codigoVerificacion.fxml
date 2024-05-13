@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="bg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #112233;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alquieventos.CodigoVerificacionController">
+   <children>
+      <TextField fx:id="codigoTF" layoutX="202.0" layoutY="282.0" prefHeight="25.0" prefWidth="196.0" />
+      <Label fx:id="texto1" layoutX="182.0" layoutY="212.0" prefHeight="37.0" prefWidth="236.0" text="Introduce el código de 6 dígitos" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="texto2" layoutX="140.0" layoutY="231.0" prefHeight="37.0" prefWidth="320.0" text=" que ha sido enviado a tu correo electrónico." textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <VBox layoutY="380.0" prefHeight="12.0" prefWidth="600.0" style="-fx-background-color: #0085fa;" />
+      <VBox layoutX="-234.0" layoutY="393.0" prefHeight="12.0" prefWidth="834.0" style="-fx-background-color: white;" />
+      <ImageView fx:id="escudo" fitHeight="192.0" fitWidth="364.0" layoutX="39.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/image-removebg-preview%20(4).png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

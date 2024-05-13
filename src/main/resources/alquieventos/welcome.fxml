@@ -20,7 +20,7 @@
          <children>
             <VBox prefHeight="400.0" prefWidth="204.0" style="-fx-background-color: #112233;">
                <children>
-                  <Label fx:id="iniciarSesion" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="67.0" prefWidth="172.0" text="Iniciar sesión" textFill="#0085fa">
+                  <Label fx:id="iniciarSesion" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="67.0" prefWidth="172.0" text="Iniciar sesión" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="29.0" />
                      </font>
@@ -28,12 +28,12 @@
                         <Insets top="70.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="usuario" text="Usuario" textFill="WHITE">
+                  <Label fx:id="correo" text="Correo Electrónico" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="usuarioTF">
+                  <TextField fx:id="correoTF" onKeyPressed="#keyAction" onKeyReleased="#keyAction" onKeyTyped="#keyAction">
                      <VBox.margin>
                         <Insets bottom="10.0" />
                      </VBox.margin>
@@ -43,8 +43,8 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="contraseñaPF" />
-                  <Button fx:id="ingresar" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#ingresarOnAction" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #0085fa;" text="Ingresar" textFill="WHITE">
+                  <PasswordField fx:id="contraseñaPF" onKeyPressed="#keyAction" onKeyReleased="#keyAction" onKeyTyped="#keyAction" />
+                  <Button fx:id="ingresar" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eventOnAction" prefHeight="33.0" prefWidth="84.0" style="-fx-background-color: #0085fa;" text="Ingresar" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" top="20.0" />
                      </VBox.margin>
@@ -98,7 +98,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="registrarse" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: #112233;" text="Registrarse" textFill="WHITE">
+                  <Button fx:id="registrarse" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#eventOnAction" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: #112233;" text="Registrarse" textFill="WHITE">
                      <VBox.margin>
                         <Insets left="142.0" top="30.0" />
                      </VBox.margin>
