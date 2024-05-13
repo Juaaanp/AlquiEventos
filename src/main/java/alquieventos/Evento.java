@@ -12,13 +12,20 @@ public class Evento {
     private Localidad localidad;
     private int capacidad;
     private Ciudad ciudad;
+    private String city;
 
     // Constructor vacío
-    public Evento(){
+    public Evento(String nombre, String ciudad, String descripcion, TipoEvento tipo, LocalDate fecha, String direccion){
+        this.nombre = nombre;
+        this.city = ciudad;
+        this.descripcion = descripcion;
+        this.tipoEvento = tipo;
+        this.fecha = fecha;
+        this.direccion = direccion;
     }
 
     //Constructor con argumentos.
-    public Evento(String nombre, String descripcion, TipoEvento tipoEvento, String imagen, LocalDate fecha,
+    /*public Evento(String nombre, String descripcion, TipoEvento tipoEvento, String imagen, LocalDate fecha,
             String direccion, Localidad localidad, int capacidad, Ciudad ciudad) {
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -29,7 +36,7 @@ public class Evento {
         this.localidad = localidad;
         this.capacidad = capacidad;
         this.ciudad = ciudad;
-    }
+    }*/
 
     //Métodos gets y sets.
     public String getNombre() {

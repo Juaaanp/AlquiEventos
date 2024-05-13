@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alquieventos.AdminController">
+   <children>
+      <TableView fx:id="tblEventos" layoutX="25.0" layoutY="150.0" prefHeight="200.0" prefWidth="558.0">
+         <columns>
+            <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="colCiudad" prefWidth="75.0" text="Ciudad" />
+            <TableColumn fx:id="colDescripcion" prefWidth="75.0" text="Descripción" />
+            <TableColumn fx:id="colTipo" prefWidth="75.0" text="Tipo" />
+            <TableColumn fx:id="colFecha" prefWidth="75.0" text="Fecha" />
+            <TableColumn fx:id="colDireccion" prefWidth="75.0" text="Dirección" />
+         </columns>
+      </TableView>
+      <TextField fx:id="tfNombre" layoutX="37.0" layoutY="36.0" />
+      <TextField fx:id="tfCiudad" layoutX="206.0" layoutY="36.0" />
+      <TextField fx:id="tfDescripcion" layoutX="383.0" layoutY="36.0" />
+      <TextField fx:id="tfDireccion" layoutX="384.0" layoutY="94.0" />
+      <Label layoutX="38.0" layoutY="14.0" text="Nombre" />
+      <Label layoutX="207.0" layoutY="14.0" prefHeight="18.0" prefWidth="44.0" text="Ciudad" />
+      <Label layoutX="383.0" layoutY="14.0" text="Descripción" />
+      <Label layoutX="383.0" layoutY="77.0" text="Dirección" />
+      <Button fx:id="agregarEvento" layoutX="278.0" layoutY="361.0" mnemonicParsing="false" onAction="#agregarEvento" text="Agregar Evento" />
+      <ComboBox fx:id="combTipo" layoutX="37.0" layoutY="94.0" prefWidth="150.0" promptText="TipoEvento" />
+      <DatePicker fx:id="tfFecha" layoutX="193.0" layoutY="94.0" />
+      <Label layoutX="38.0" layoutY="78.0" text="Tipo" />
+      <Label layoutX="206.0" layoutY="78.0" text="Fecha" />
+   </children>
+</AnchorPane>
