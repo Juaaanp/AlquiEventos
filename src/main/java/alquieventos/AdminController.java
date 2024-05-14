@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class AdminController implements Initializable{
 
@@ -88,7 +89,7 @@ public class AdminController implements Initializable{
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error");
-            alert.setContentText("La persona existe");
+            alert.setContentText("El evento ya existe");
             alert.showAndWait();
         }
     }
@@ -103,11 +104,80 @@ public class AdminController implements Initializable{
 
         eventos = FXCollections.observableArrayList();
         this.colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        this.colCiudad.setCellValueFactory(new PropertyValueFactory<>("ciudad"));
+        this.colCiudad.setCellValueFactory(new PropertyValueFactory<>("city"));
         this.colDescripcion.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
         this.colTipo.setCellValueFactory(new PropertyValueFactory<>("tipoEvento"));
         this.colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         this.colDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+    }
+
+    @FXML
+    void eliminar(ActionEvent event) {
+        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();//Devuelve la persona que seleccionemos
+
+        if(e == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Debe seleccionar un evento");
+            alert.showAndWait();
+        }else {
+            this.eventos.remove(e);
+            this.tblEventos.refresh();
+        }
+    }
+
+    @FXML
+    void modificar(ActionEvent event) {
+        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();//Devuelve la persona que seleccionemos
+
+        if(e == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Debe seleccionar un evento");
+            alert.showAndWait();
+        }else {
+            String nombre = this.tfNombre.getText();
+            String ciudad = this.tfCiudad.getText();
+            String descripcion = this.tfDescripcion.getText();
+            TipoEvento tipo = (TipoEvento) this.combTipo.getSelectionModel().getSelectedItem();
+            LocalDate fecha = this.tfFecha.getValue();
+            String direccion = this.tfDireccion.getText();
+    
+            Evento aux = new Evento(nombre,ciudad,descripcion,tipo,fecha,direccion);
+    
+            if(!this.eventos.contains(aux)) {
+                e.setNombre(nombre);
+                e.setCity(ciudad);
+                e.setDescripcion(descripcion);
+                e.setTipoEvento(tipo);
+                e.setFecha(fecha);
+                e.setDireccion(direccion);
+                this.tblEventos.refresh();
+
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Error");
+                alert.setContentText("El evento ya existe");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    @FXML
+    void seleccionar(MouseEvent event) {
+        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();//Devuelve la persona que seleccionemos
+
+        if(e != null){
+            this.tfNombre.setText(e.getNombre());
+            this.tfCiudad.setText(e.getCity());
+            this.tfDescripcion.setText(e.getDescripcion());
+            this.combTipo.setValue(e.getTipoEvento());
+            this.tfFecha.setValue(e.getFecha());
+            this.tfDireccion.setText(e.getDireccion());
+        }
     }
 }
 

@@ -1,9 +1,11 @@
 package alquieventos;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Evento {
     private String nombre;
+    private String city;
     private String descripcion;
     private TipoEvento tipoEvento;
     private String imagen;
@@ -12,12 +14,11 @@ public class Evento {
     private Localidad localidad;
     private int capacidad;
     private Ciudad ciudad;
-    private String city;
 
     // Constructor vacío
-    public Evento(String nombre, String ciudad, String descripcion, TipoEvento tipo, LocalDate fecha, String direccion){
+    public Evento(String nombre, String city, String descripcion, TipoEvento tipo, LocalDate fecha, String direccion){
         this.nombre = nombre;
-        this.city = ciudad;
+        this.city = city;
         this.descripcion = descripcion;
         this.tipoEvento = tipo;
         this.fecha = fecha;
@@ -111,6 +112,31 @@ public class Evento {
         this.ciudad = ciudad;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    @Override//Se debe usar este metodo porque .contains compara todos los campos de la clase
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Evento evento = (Evento) o;
+        return Objects.equals(nombre, evento.nombre) &&
+                Objects.equals(city, evento.city) &&
+                Objects.equals(descripcion, evento.descripcion) &&
+                tipoEvento == evento.tipoEvento &&
+                Objects.equals(fecha, evento.fecha) &&
+                Objects.equals(direccion, evento.direccion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, city, descripcion, tipoEvento, fecha, direccion);
+    }
     //public double calcularRecaudacion(){
 
     //}
