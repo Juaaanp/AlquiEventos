@@ -1,9 +1,11 @@
 package alquieventos;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import Util.Serializacion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class AdminController implements Initializable{
+public class AdminController implements Initializable, Serializable{
 
     @FXML
     private Button agregarEvento;
@@ -179,5 +181,10 @@ public class AdminController implements Initializable{
             this.tfDireccion.setText(e.getDireccion());
         }
     }
+
+    public void guardar(){
+        Serializacion.serializarObjeto("ListaEventos", this);
+    }
+    
 }
 

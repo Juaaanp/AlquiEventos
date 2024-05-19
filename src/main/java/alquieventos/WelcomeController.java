@@ -62,9 +62,9 @@ public class WelcomeController  {
     public void keyAction(@SuppressWarnings("exports") KeyEvent event){
         Object evt = event.getSource();
         if (evt.equals(correoTF)) {
-            if (event.getCharacter().equals(" ")) {
-                event.consume();
-            }
+            correoTF.setText(correoTF.getText().trim());
+            correoTF.positionCaret(correoTF.getText().length());
+
         }
         else if (evt.equals(contraseñaPF)) {
             if (event.getCharacter().equals(" ")) {
@@ -82,7 +82,7 @@ public class WelcomeController  {
                 String correo = correoTF.getText();
                 String contraseña = contraseñaPF.getText();
                 if (correo.equalsIgnoreCase("admin@unieventos.com") && contraseña.equals("admin123")) {
-                    loadStage("/alquieventos/codigoVerificacion.fxml", event);
+                    loadStage("/alquieventos/admin.fxml", event);
                 }
 
                 else{

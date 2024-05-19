@@ -9,9 +9,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alquieventos.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0085fa;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alquieventos.AdminController">
    <children>
-      <TableView fx:id="tblEventos" layoutX="25.0" layoutY="150.0" onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="558.0">
+      <TableView fx:id="tblEventos" layoutX="25.0" layoutY="150.0" onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="558.0" style="-fx-background-color: #112233;">
          <columns>
             <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
             <TableColumn fx:id="colCiudad" prefWidth="75.0" text="Ciudad" />
@@ -25,16 +25,16 @@
       <TextField fx:id="tfCiudad" layoutX="206.0" layoutY="36.0" />
       <TextField fx:id="tfDescripcion" layoutX="383.0" layoutY="36.0" />
       <TextField fx:id="tfDireccion" layoutX="384.0" layoutY="94.0" />
-      <Label layoutX="38.0" layoutY="14.0" text="Nombre" />
-      <Label layoutX="207.0" layoutY="14.0" prefHeight="18.0" prefWidth="44.0" text="Ciudad" />
-      <Label layoutX="383.0" layoutY="14.0" text="Descripción" />
-      <Label layoutX="383.0" layoutY="77.0" text="Dirección" />
-      <Button fx:id="agregarEvento" layoutX="112.0" layoutY="361.0" mnemonicParsing="false" onAction="#agregarEvento" text="Agregar Evento" />
+      <Label layoutX="38.0" layoutY="14.0" text="Nombre" textFill="WHITE" />
+      <Label layoutX="207.0" layoutY="14.0" prefHeight="18.0" prefWidth="44.0" text="Ciudad" textFill="WHITE" />
+      <Label layoutX="383.0" layoutY="14.0" text="Descripción" textFill="WHITE" />
+      <Label layoutX="383.0" layoutY="77.0" text="Dirección" textFill="WHITE" />
+      <Button fx:id="agregarEvento" layoutX="112.0" layoutY="361.0" mnemonicParsing="false" onAction="#agregarEvento" style="-fx-background-color: #112233;" text="Agregar Evento" textFill="#fdfdfd" />
       <ComboBox fx:id="combTipo" layoutX="37.0" layoutY="94.0" prefWidth="150.0" promptText="TipoEvento" />
-      <DatePicker fx:id="tfFecha" layoutX="193.0" layoutY="94.0" />
-      <Label layoutX="38.0" layoutY="78.0" text="Tipo" />
-      <Label layoutX="206.0" layoutY="78.0" text="Fecha" />
-      <Button fx:id="eliminar" layoutX="407.0" layoutY="361.0" mnemonicParsing="false" onAction="#eliminar" text="Eliminar" />
-      <Button fx:id="modificar" layoutX="278.0" layoutY="361.0" mnemonicParsing="false" onAction="#modificar" text="Modificar" />
+      <DatePicker fx:id="tfFecha" layoutX="205.0" layoutY="94.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label layoutX="38.0" layoutY="78.0" text="Tipo" textFill="WHITE" />
+      <Label layoutX="206.0" layoutY="78.0" text="Fecha" textFill="WHITE" />
+      <Button fx:id="eliminar" layoutX="407.0" layoutY="361.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: #112233;" text="Eliminar" textFill="WHITE" />
+      <Button fx:id="modificar" layoutX="278.0" layoutY="361.0" mnemonicParsing="false" onAction="#modificar" style="-fx-background-color: #112233;" text="Modificar" textFill="WHITE" />
    </children>
 </AnchorPane>
