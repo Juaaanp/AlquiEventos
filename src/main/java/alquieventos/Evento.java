@@ -1,9 +1,10 @@
 package alquieventos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Evento {
+public class Evento implements Serializable{
     private String nombre;
     private String city;
     private String descripcion;

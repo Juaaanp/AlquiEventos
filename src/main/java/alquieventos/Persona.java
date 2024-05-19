@@ -15,8 +15,10 @@ public abstract class Persona {
         this.email = email;
         this.contraseña = contraseña;
     }
+   // Constructor vacío
+    public Persona(){}
    
-   //Métodos gets y sets.
+    //Métodos gets y sets.
    public String getNombre() {
      return nombre;
    }

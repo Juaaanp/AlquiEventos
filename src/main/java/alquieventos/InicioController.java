@@ -19,31 +19,40 @@ public class InicioController implements Initializable {
     @FXML
     private TableView<Evento> tblEventos;
     
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colCiudad;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colFecha;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colNombre;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colTipo;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private ComboBox combCiudad;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private ComboBox combNombre;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private ComboBox combTipo;
 
     @FXML
     private Label label;
 
+    @SuppressWarnings("unused")
     private ObservableList<Evento> eventos;
+    @SuppressWarnings("unused")
     private ObservableList<Evento> filtroEventos;
 
     @FXML
@@ -64,6 +73,7 @@ public class InicioController implements Initializable {
 
 
 
+    @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         ObservableList<TipoEvento> list = FXCollections.observableArrayList(TipoEvento.CONCIERTO,TipoEvento.TEATRO,
@@ -81,7 +91,7 @@ public class InicioController implements Initializable {
     }
 
     @FXML
-    public void agregarEvento(ActionEvent event) {
+    public void agregarEvento(@SuppressWarnings("exports") ActionEvent event) {
 
     }
 }

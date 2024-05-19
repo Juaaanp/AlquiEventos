@@ -1,11 +1,16 @@
 package alquieventos;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import Util.Serializacion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,26 +26,32 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class AdminController implements Initializable, Serializable{
+public class AdminController implements Initializable, Serializable {
 
     @FXML
     private Button agregarEvento;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colCiudad;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colDescripcion;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colDireccion;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colFecha;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colNombre;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colTipo;
 
@@ -62,6 +73,7 @@ public class AdminController implements Initializable, Serializable{
     @FXML
     private TextField tfNombre;
 
+    @SuppressWarnings("rawtypes")
     @FXML
     private ComboBox combTipo;
 
@@ -82,10 +94,11 @@ public class AdminController implements Initializable, Serializable{
         LocalDate fecha = this.tfFecha.getValue();
         String direccion = this.tfDireccion.getText();
 
-        Evento evento = new Evento(nombre,ciudad,descripcion,tipo,fecha,direccion);
+        Evento evento = new Evento(nombre, ciudad, descripcion, tipo, fecha, direccion);
 
-        if(!this.eventos.contains(evento)) {
+        if (!this.eventos.contains(evento)) {
             this.eventos.add(evento);
+            guardarEventos();
             this.tblEventos.setItems(eventos);
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -96,12 +109,12 @@ public class AdminController implements Initializable, Serializable{
         }
     }
 
-
+    @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        ObservableList<TipoEvento> list = FXCollections.observableArrayList(TipoEvento.CONCIERTO,TipoEvento.TEATRO,
-                                                                            TipoEvento.DEPORTE,TipoEvento.FESTIVAL,
-                                                                            TipoEvento.OTRO);
+        ObservableList<TipoEvento> list = FXCollections.observableArrayList(TipoEvento.CONCIERTO, TipoEvento.TEATRO,
+                TipoEvento.DEPORTE, TipoEvento.FESTIVAL,
+                TipoEvento.OTRO);
         combTipo.setItems(list);
 
         eventos = FXCollections.observableArrayList();
@@ -111,19 +124,22 @@ public class AdminController implements Initializable, Serializable{
         this.colTipo.setCellValueFactory(new PropertyValueFactory<>("tipoEvento"));
         this.colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         this.colDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+
+        cargarEventos();
+
     }
 
     @FXML
     void eliminar(ActionEvent event) {
-        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();//Devuelve la persona que seleccionemos
+        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();// Devuelve la persona que seleccionemos
 
-        if(e == null){
+        if (e == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error");
             alert.setContentText("Debe seleccionar un evento");
             alert.showAndWait();
-        }else {
+        } else {
             this.eventos.remove(e);
             this.tblEventos.refresh();
         }
@@ -131,25 +147,25 @@ public class AdminController implements Initializable, Serializable{
 
     @FXML
     void modificar(ActionEvent event) {
-        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();//Devuelve la persona que seleccionemos
+        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();// Devuelve la persona que seleccionemos
 
-        if(e == null){
+        if (e == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error");
             alert.setContentText("Debe seleccionar un evento");
             alert.showAndWait();
-        }else {
+        } else {
             String nombre = this.tfNombre.getText();
             String ciudad = this.tfCiudad.getText();
             String descripcion = this.tfDescripcion.getText();
             TipoEvento tipo = (TipoEvento) this.combTipo.getSelectionModel().getSelectedItem();
             LocalDate fecha = this.tfFecha.getValue();
             String direccion = this.tfDireccion.getText();
-    
-            Evento aux = new Evento(nombre,ciudad,descripcion,tipo,fecha,direccion);
-    
-            if(!this.eventos.contains(aux)) {
+
+            Evento aux = new Evento(nombre, ciudad, descripcion, tipo, fecha, direccion);
+
+            if (!this.eventos.contains(aux)) {
                 e.setNombre(nombre);
                 e.setCity(ciudad);
                 e.setDescripcion(descripcion);
@@ -168,11 +184,12 @@ public class AdminController implements Initializable, Serializable{
         }
     }
 
+    @SuppressWarnings("unchecked")
     @FXML
     void seleccionar(MouseEvent event) {
-        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();//Devuelve la persona que seleccionemos
+        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();// Devuelve la persona que seleccionemos
 
-        if(e != null){
+        if (e != null) {
             this.tfNombre.setText(e.getNombre());
             this.tfCiudad.setText(e.getCity());
             this.tfDescripcion.setText(e.getDescripcion());
@@ -182,9 +199,38 @@ public class AdminController implements Initializable, Serializable{
         }
     }
 
-    public void guardar(){
-        Serializacion.serializarObjeto("ListaEventos", this);
+    public void guardarEventos() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("EstadoListaEventos.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(new ArrayList<Evento>(eventos)); // Convertir a ArrayList antes de serializar
+            out.close();
+            fileOut.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
     }
-    
-}
 
+    public void cargarEventos() {
+        try {
+            FileInputStream fileIn = new FileInputStream("EstadoListaEventos.txt");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            eventos = FXCollections.observableArrayList((ArrayList<Evento>) in.readObject()); // Convertir de nuevo a
+                                                                                              // ObservableList después
+                                                                                              // de deserializar
+            in.close();
+            fileIn.close();
+
+            // Actualiza la tabla con los nuevos datos
+            tblEventos.setItems(eventos);
+        } catch (IOException i) {
+            i.printStackTrace();
+            return;
+        } catch (ClassNotFoundException c) {
+            System.out.println("La clase Evento no se encontró");
+            c.printStackTrace();
+            return;
+        }
+    }
+
+}

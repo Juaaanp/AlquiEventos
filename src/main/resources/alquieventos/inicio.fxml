@@ -5,15 +5,18 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alquieventos.InicioController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0085fa;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alquieventos.InicioController">
    <children>
-      <ComboBox fx:id="combNombre" layoutX="55.0" layoutY="74.0" onAction="#selectNombre" prefWidth="150.0" promptText="Nombre" />
-      <Label fx:id="label" layoutX="55.0" layoutY="119.0" prefHeight="38.0" prefWidth="123.0" text="Label" />
-      <ComboBox fx:id="combTipo" layoutX="225.0" layoutY="76.0" onAction="#selectTipo" prefWidth="150.0" promptText="Tipo" />
-      <ComboBox fx:id="combCiudad" layoutX="403.0" layoutY="76.0" onAction="#selectCiudad" prefWidth="150.0" promptText="Ciudad" />
-      <TableView fx:id="tblEventos" layoutX="60.0" layoutY="150.0" prefHeight="200.0" prefWidth="492.0">
+      <ComboBox fx:id="combNombre" layoutX="55.0" layoutY="82.0" onAction="#selectNombre" prefWidth="150.0" promptText="Nombre" style="-fx-background-color: #FFFFFF;" />
+      <Label fx:id="label" layoutX="60.0" layoutY="118.0" prefHeight="38.0" prefWidth="123.0" text="Buscar evento" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font></Label>
+      <ComboBox fx:id="combTipo" layoutX="225.0" layoutY="82.0" onAction="#selectTipo" prefWidth="150.0" promptText="Tipo" style="-fx-background-color: #FFFFFF;" />
+      <ComboBox fx:id="combCiudad" layoutX="402.0" layoutY="82.0" onAction="#selectCiudad" prefWidth="150.0" promptText="Ciudad" style="-fx-background-color: #FFFFFF;" />
+      <TableView fx:id="tblEventos" layoutX="60.0" layoutY="150.0" prefHeight="200.0" prefWidth="492.0" style="-fx-background-color: #112233;">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
           <TableColumn fx:id="colTipo" prefWidth="75.0" text="Tipo" />
@@ -21,5 +24,14 @@
             <TableColumn fx:id="colFecha" prefWidth="75.0" text="Fecha" />
         </columns>
       </TableView>
+      <AnchorPane layoutY="-2.0" prefHeight="67.0" prefWidth="600.0" style="-fx-background-color: #112233;">
+         <children>
+            <Label layoutX="35.0" layoutY="7.0" text="AlquiEventos" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

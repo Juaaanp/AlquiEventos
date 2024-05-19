@@ -1,19 +1,24 @@
 package alquieventos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable {
     private Collection <Compra> compras;
     private List<Evento> eventos = new ArrayList<>();
+    private static final long serialVersionUID = -6914307937088448381L;
     
-    //Constructor con argumentos heredados y una lista de compras.
+    //Constructor con argumentos heredados
     public Cliente(String nombre, String cedula, String numTelefono, String email, String contraseña) {
-        super(nombre, cedula, numTelefono, email, contraseña);
+        super(nombre, cedula, numTelefono, email, contraseña); 
     }
+    
+    //Constructor vacío
+    public Cliente(){}
 
     @Override
     public void loguear() {
@@ -95,4 +100,11 @@ public class Cliente extends Persona {
         this.compras = compras;
     }
 
+    @Override
+    public String toString() {
+        return "Cliente [getNombre()=" + getNombre() + ", getCedula()=" + getCedula() + ", getNumTelefono()="
+                + getNumTelefono() + ", getEmail()=" + getEmail() + ", getContraseña()=" + getContraseña() + "]";
+    }
+
+    
 }

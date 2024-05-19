@@ -113,8 +113,7 @@ public class WelcomeController  {
         } catch (Exception e) {
             new Exception("Error al cambiar de escena");
         }
-    }
-    
+    }    
             
 }
     
