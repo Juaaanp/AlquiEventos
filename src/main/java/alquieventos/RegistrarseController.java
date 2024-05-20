@@ -133,6 +133,7 @@ public class RegistrarseController implements Initializable, Serializable {
             in.close();
             fileIn.close();
             mostrarClientes();
+            System.out.println("el tamaño de la lista de clientes actual es: "+ listaClientes.size());
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {

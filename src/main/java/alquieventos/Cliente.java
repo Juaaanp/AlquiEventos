@@ -1,13 +1,13 @@
 package alquieventos;
 
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public class Cliente extends Persona implements Serializable {
+public class Cliente extends Persona  {
     private Collection <Compra> compras;
     private List<Evento> eventos = new ArrayList<>();
     private static final long serialVersionUID = -6914307937088448381L;
@@ -102,8 +102,8 @@ public class Cliente extends Persona implements Serializable {
 
     @Override
     public String toString() {
-        return "Cliente [getNombre()=" + getNombre() + ", getCedula()=" + getCedula() + ", getNumTelefono()="
-                + getNumTelefono() + ", getEmail()=" + getEmail() + ", getContraseña()=" + getContraseña() + "]";
+        return "Cliente [Nombre =" + getNombre() + ", Cedula =" + getCedula() + ", NumTelefono ="
+                + getNumTelefono() + ", Email=" + getEmail() + ", Contraseña =" + getContraseña() + "]";
     }
 
     
