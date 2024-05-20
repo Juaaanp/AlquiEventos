@@ -14,11 +14,11 @@ import java.util.ResourceBundle;
 /**
  * JavaFX App
  */
-public class AlquieventosApp extends Application implements Initializable {
+public class AlquieventosApp extends Application  {
 
     @Override
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/alquieventos/inicio.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/alquieventos/welcome.fxml"));
         Scene scene = new Scene(root);
         //scene.getStylesheets().add("/alquieventos/welcomeStyle.CSS");
         stage.setScene(scene);
@@ -27,9 +27,7 @@ public class AlquieventosApp extends Application implements Initializable {
     public static void main(String[] args) {
         launch(args);
     }
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        
-    }
+
+    
 
 }

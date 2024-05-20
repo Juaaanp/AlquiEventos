@@ -76,7 +76,7 @@ public class InicioController implements Initializable {
             this.filtroEventos.clear();
             
             for(Evento e: this.eventos){
-                if(e.getCity().toLowerCase().contains(filtroCiudad.toLowerCase())){
+                if(e.getCity().toLowerCase().startsWith(filtroCiudad.toLowerCase())){
                     this.filtroEventos.add(e);
                 }
             }
@@ -93,7 +93,7 @@ public class InicioController implements Initializable {
             this.filtroEventos.clear();
             
             for(Evento e: this.eventos){
-                if(e.getNombre().toLowerCase().contains(filtroNombre.toLowerCase())){
+                if(e.getNombre().toLowerCase().startsWith(filtroNombre.toLowerCase())){
                     this.filtroEventos.add(e);
                 }
             }

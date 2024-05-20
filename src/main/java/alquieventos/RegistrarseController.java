@@ -148,4 +148,7 @@ public class RegistrarseController implements Initializable, Serializable {
 
     }
 
+    public ArrayList<Cliente> getlistaClientes(){
+        return listaClientes;
+    }
 }

@@ -173,7 +173,7 @@ public class AdminController implements Initializable, Serializable {
                 e.setFecha(fecha);
                 e.setDireccion(direccion);
                 this.tblEventos.refresh();
-
+                guardarEventos();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
