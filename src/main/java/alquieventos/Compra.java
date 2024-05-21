@@ -1,11 +1,14 @@
 package alquieventos;
 
+import java.util.ArrayList;
+
 public class Compra {
     private Cliente cliente;
     private Evento evento;
     private Localidad localidad;
     private Cupon cupon;
     private Factura factura;
+    private ArrayList <Compra> Listacompras; 
 
     //constructor vacío.
     public Compra(){

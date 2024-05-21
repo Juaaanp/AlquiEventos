@@ -2,6 +2,7 @@ package alquieventos;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Evento implements Serializable{
@@ -12,33 +13,21 @@ public class Evento implements Serializable{
     private String imagen;
     private LocalDate fecha;
     private String direccion;
-    private Localidad localidad;
-    private int capacidad;
-    private Ciudad ciudad;
+    private ArrayList<Localidad> localidades;
 
-    // Constructor vacío
-    public Evento(String nombre, String city, String descripcion, TipoEvento tipo, LocalDate fecha, String direccion){
+    //Constructor vacío.
+    public Evento(){}
+    
+    // Constructor con argumentos.
+    public Evento(String nombre, String city, String descripcion, TipoEvento tipo, LocalDate fecha, String direccion, ArrayList<Localidad> localidades){
         this.nombre = nombre;
         this.city = city;
         this.descripcion = descripcion;
         this.tipoEvento = tipo;
         this.fecha = fecha;
         this.direccion = direccion;
+        this.localidades = localidades;
     }
-
-    //Constructor con argumentos.
-    /*public Evento(String nombre, String descripcion, TipoEvento tipoEvento, String imagen, LocalDate fecha,
-            String direccion, Localidad localidad, int capacidad, Ciudad ciudad) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.tipoEvento = tipoEvento;
-        this.imagen = imagen;
-        this.fecha = fecha;
-        this.direccion = direccion;
-        this.localidad = localidad;
-        this.capacidad = capacidad;
-        this.ciudad = ciudad;
-    }*/
 
     //Métodos gets y sets.
     public String getNombre() {
@@ -89,30 +78,7 @@ public class Evento implements Serializable{
         this.direccion = direccion;
     }
 
-    public Localidad getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(Localidad localidad) {
-        this.localidad = localidad;
-    }
-
-    public int getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(int capacidad) {
-        this.capacidad = capacidad;
-    }
-
-    public Ciudad getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(Ciudad ciudad) {
-        this.ciudad = ciudad;
-    }
-
+    
     public String getCity() {
         return city;
     }
@@ -138,7 +104,21 @@ public class Evento implements Serializable{
     public int hashCode() {
         return Objects.hash(nombre, city, descripcion, tipoEvento, fecha, direccion);
     }
-    //public double calcularRecaudacion(){
+    public double calcularRecaudacion(){
+        double recaudacion = 0.0;
+        for (Localidad localidad : localidades) {
+            recaudacion += localidad.calcularRecaudacionLocalidad();
+        }
+        return recaudacion;
+    }
+
+    public ArrayList<Localidad> getLocalidades() {
+        return localidades;
+    }
+
+    public void setLocalidades(ArrayList<Localidad> localidades) {
+        this.localidades = localidades;
+    }
 
     //}
 }

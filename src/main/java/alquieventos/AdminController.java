@@ -94,7 +94,7 @@ public class AdminController implements Initializable, Serializable {
         LocalDate fecha = this.tfFecha.getValue();
         String direccion = this.tfDireccion.getText();
 
-        Evento evento = new Evento(nombre, ciudad, descripcion, tipo, fecha, direccion);
+        Evento evento = new Evento(nombre, ciudad, descripcion, tipo, fecha, direccion, );
 
         if (!this.eventos.contains(evento)) {
             this.eventos.add(evento);

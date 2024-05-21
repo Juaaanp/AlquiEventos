@@ -4,8 +4,9 @@ package alquieventos;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
+
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class Cliente extends Persona  {
     private Collection <Compra> compras;
@@ -29,28 +30,17 @@ public class Cliente extends Persona  {
 
     }
 
-    // buscar evento por su nombre.
-    public Optional<Evento> buscarEvento(String nombre){
-        Predicate<Evento> condicion = e -> e.getNombre().toLowerCase().equals(nombre.toLowerCase());  
-        return eventos.stream().filter(condicion).findAny();
-    }
-    // Buscar evento por su tipo
-    public Optional<Evento> buscarEvento(TipoEvento tipoEvento){
-        Predicate<Evento> condicion = e -> e.getTipoEvento().equals(tipoEvento);
-        return eventos.stream().filter(condicion).findAny();
-    }
-    // Buscar evento por su ciudad
-    public Optional<Evento> buscarEvento(Ciudad ciudad){
-        Predicate<Evento> condicion = e -> e.getCiudad().getNombre().toLowerCase().equals(ciudad.getNombre().toLowerCase());
-        return eventos.stream().filter(condicion).findAny();
-    }
-    
     // Realizar compra si se cumplen las siguientes validaciones: 
     //la fecha de la factura es antes a la fecha del dia del evento.
 
     public void realizarCompra(Compra compra){
-        if (validarFechaCompra(compra)) {
+        if (validarFechaCompra(compra) && compra.getLocalidad().hayCupos()) {
             compras.add(compra);
+        }
+        else{
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setContentText("Error al realizar compra");
+            alert.showAndWait();
         }
     }
     
