@@ -15,7 +15,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -25,6 +28,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class AdminController implements Initializable, Serializable {
 
@@ -55,6 +60,10 @@ public class AdminController implements Initializable, Serializable {
     @FXML
     private TableColumn colTipo;
 
+    @SuppressWarnings("rawtypes")
+    @FXML
+    private TableColumn colLocalidad;
+
     @FXML
     private TableView<Evento> tblEventos;
 
@@ -78,6 +87,8 @@ public class AdminController implements Initializable, Serializable {
     private ComboBox combTipo;
 
     private ObservableList<Evento> eventos;
+    private ObservableList<Localidad> localidades;
+    //private ArrayList<Localidad> localidadesA = new ArrayList<>(localidades);
 
     @FXML
     void selectTipo(ActionEvent event) {
@@ -94,27 +105,59 @@ public class AdminController implements Initializable, Serializable {
         LocalDate fecha = this.tfFecha.getValue();
         String direccion = this.tfDireccion.getText();
 
-        Evento evento = new Evento(nombre, ciudad, descripcion, tipo, fecha, direccion, );
-
-        if (!this.eventos.contains(evento)) {
-            this.eventos.add(evento);
-            guardarEventos();
-            this.tblEventos.setItems(eventos);
-        } else {
+        if(localidades.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setTitle("Error");
-            alert.setContentText("El evento ya existe");
+            alert.setContentText("Debe agregar almenos una localidad");
             alert.showAndWait();
+        } else {
+            ArrayList<Localidad> localidadesA = new ArrayList<>(localidades);
+            Evento evento = new Evento(nombre, ciudad, descripcion, tipo, fecha, direccion, localidadesA);
+
+            if (!this.eventos.contains(evento)) {
+                this.eventos.add(evento);
+                guardarEventos();
+                this.tblEventos.setItems(eventos);
+                localidades.clear();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setTitle("Error");
+                alert.setContentText("El evento ya existe");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    @FXML
+    void agregarLocalidad(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/alquieventos/agregarLocalidad.fxml"));
+            Parent root = loader.load();
+            AgregarLocalidadController control = loader.getController();
+            control.initAtributos(localidades);
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.showAndWait();
+
+            Localidad l = control.getLocalidad();
+            if(l != null) {
+                this.localidades.add(l);
+                this.tblEventos.refresh();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        ObservableList<TipoEvento> list = FXCollections.observableArrayList(TipoEvento.CONCIERTO, TipoEvento.TEATRO,
-                TipoEvento.DEPORTE, TipoEvento.FESTIVAL,
-                TipoEvento.OTRO);
+        ObservableList<TipoEvento> list = FXCollections.observableArrayList(TipoEvento.values());
         combTipo.setItems(list);
 
         eventos = FXCollections.observableArrayList();
@@ -124,9 +167,10 @@ public class AdminController implements Initializable, Serializable {
         this.colTipo.setCellValueFactory(new PropertyValueFactory<>("tipoEvento"));
         this.colFecha.setCellValueFactory(new PropertyValueFactory<>("fecha"));
         this.colDireccion.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+        this.colLocalidad.setCellValueFactory(new PropertyValueFactory<>("localidadesAsString"));
 
+        localidades = FXCollections.observableArrayList();
         cargarEventos();
-
     }
 
     @FXML
@@ -163,7 +207,8 @@ public class AdminController implements Initializable, Serializable {
             LocalDate fecha = this.tfFecha.getValue();
             String direccion = this.tfDireccion.getText();
 
-            Evento aux = new Evento(nombre, ciudad, descripcion, tipo, fecha, direccion);
+            ArrayList<Localidad> localidadesA = new ArrayList<>(localidades);
+            Evento aux = new Evento(nombre, ciudad, descripcion, tipo, fecha, direccion, localidadesA);
 
             if (!this.eventos.contains(aux)) {
                 e.setNombre(nombre);
@@ -211,6 +256,7 @@ public class AdminController implements Initializable, Serializable {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public void cargarEventos() {
         try {
             FileInputStream fileIn = new FileInputStream("EstadoListaEventos.txt");

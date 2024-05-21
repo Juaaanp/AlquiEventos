@@ -1,8 +1,9 @@
 package alquieventos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Localidad {
+public class Localidad implements Serializable {
     private double precio;
     private int capacidad;
     private ArrayList<Integer> cupos = new ArrayList<Integer>() ;
@@ -57,6 +58,11 @@ public class Localidad {
 
     public double calcularRecaudacionLocalidad(){
         return contarCupos()*getPrecio();
+    }
+
+    @Override
+    public String toString() {
+        return "Precio: " + precio + "\nCapacidad: " + capacidad + "\n";
     }
 }
     

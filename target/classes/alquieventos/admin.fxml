@@ -19,6 +19,7 @@
             <TableColumn fx:id="colTipo" prefWidth="75.0" text="Tipo" />
             <TableColumn fx:id="colFecha" prefWidth="75.0" text="Fecha" />
             <TableColumn fx:id="colDireccion" prefWidth="75.0" text="Dirección" />
+            <TableColumn fx:id="colLocalidad" prefWidth="106.39999999999998" text="Localidad" />
          </columns>
       </TableView>
       <TextField fx:id="tfNombre" layoutX="37.0" layoutY="36.0" />
@@ -36,5 +37,6 @@
       <Label layoutX="206.0" layoutY="78.0" text="Fecha" textFill="WHITE" />
       <Button fx:id="eliminar" layoutX="407.0" layoutY="361.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: #112233;" text="Eliminar" textFill="WHITE" />
       <Button fx:id="modificar" layoutX="278.0" layoutY="361.0" mnemonicParsing="false" onAction="#modificar" style="-fx-background-color: #112233;" text="Modificar" textFill="WHITE" />
+      <Button layoutX="479.0" layoutY="361.0" mnemonicParsing="false" onAction="#agregarLocalidad" text="AgregarLocalidad" />
    </children>
 </AnchorPane>

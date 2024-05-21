@@ -87,6 +87,14 @@ public class Evento implements Serializable{
         this.city = city;
     }
 
+    public String getLocalidadesAsString() {
+        StringBuilder sb = new StringBuilder();
+        for (Localidad loc : localidades) {
+            sb.append(loc.toString());
+        }
+        return sb.toString();
+    }
+
     @Override//Se debe usar este metodo porque .contains compara todos los campos de la clase
     public boolean equals(Object o) {
         if (this == o) return true;
