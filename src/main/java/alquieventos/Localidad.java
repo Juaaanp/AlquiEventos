@@ -36,6 +36,10 @@ public class Localidad implements Serializable {
         this.capacidad = capacidad;
     }
     
+    public ArrayList<Integer> getCupos(){
+        return cupos;
+    }
+    
     public boolean hayCupos(){
          if (cupos.size() == capacidad) {
             return false;

@@ -58,7 +58,7 @@ public class Cliente extends Persona  {
                     if (c.equals(compra)) {
                         iterator.remove();
                         System.out.println("La compra ha sido cancelada exitosamente.");
-                        return; // Exit the method once the compra is found and removed
+                        return; 
                     }
                 }
                 System.out.println("La compra no está registrada en la lista de compras, no se ha podido cancelar su compra.");

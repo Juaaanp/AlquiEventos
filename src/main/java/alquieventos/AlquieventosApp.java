@@ -15,7 +15,7 @@ public class AlquieventosApp extends Application  {
 
     @Override
     public void start(@SuppressWarnings("exports") Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/alquieventos/inicio.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/alquieventos/welcome.fxml"));
         Scene scene = new Scene(root);
         //scene.getStylesheets().add("/alquieventos/welcomeStyle.CSS");
         stage.setScene(scene);

@@ -1,43 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alquieventos.PagoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0085fa;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alquieventos.PagoController">
    <children>
-      <Pane layoutX="-6.0" prefHeight="45.0" prefWidth="610.0" style="-fx-background-color: blue;">
+      <Pane prefHeight="61.0" prefWidth="600.0" style="-fx-background-color: #112233;">
          <children>
-            <Label layoutX="14.0" layoutY="-2.0" text="Comprar Entrada" textFill="WHITE">
+            <Label layoutX="14.0" text="Comprar Entrada" textFill="WHITE">
                <font>
-                  <Font size="34.0" />
+                  <Font name="System Bold" size="34.0" />
                </font>
+               <padding>
+                  <Insets left="20.0" top="5.0" />
+               </padding>
             </Label>
          </children>
       </Pane>
-      <Pane layoutY="46.0" prefHeight="355.0" prefWidth="159.0" style="-fx-background-color: d3d3d3;">
+      <Pane layoutY="61.0" prefHeight="340.0" prefWidth="208.0" style="-fx-background-color: #112233;">
          <children>
-            <Label layoutX="7.0" layoutY="24.0" text="Evento" />
-            <Label fx:id="lEvento" layoutX="11.0" layoutY="41.0" text="Label" />
-            <Label layoutX="11.0" layoutY="72.0" text="Tipo de Evento" />
-            <Label fx:id="lTipoEvento" layoutX="11.0" layoutY="89.0" text="Label" />
-            <Label layoutX="13.0" layoutY="127.0" text="Ciudad" />
-            <Label fx:id="lCiudad" layoutX="11.0" layoutY="144.0" text="Label" />
-            <Label layoutX="11.0" layoutY="178.0" text="Fecha" />
-            <Label fx:id="lFecha" layoutX="11.0" layoutY="195.0" text="Label" />
-            <Label layoutX="11.0" layoutY="224.0" text="Descripción" />
-            <Label fx:id="lDescripcion" layoutX="11.0" layoutY="241.0" text="Label" />
+            <Label layoutX="49.0" layoutY="59.0" prefHeight="17.0" prefWidth="110.0" style="-fx-background-color: #F;" text="Nombre del evento" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="lEvento" layoutX="90.0" layoutY="76.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="64.0" layoutY="110.0" text="Tipo de Evento" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="lTipoEvento" layoutX="90.0" layoutY="127.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="85.0" layoutY="162.0" text="Ciudad" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="lCiudad" layoutX="90.0" layoutY="179.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="89.0" layoutY="216.0" text="Fecha" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="lFecha" layoutX="90.0" layoutY="233.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <Label layoutX="73.0" layoutY="273.0" text="Descripción" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <Label fx:id="lDescripcion" layoutX="90.0" layoutY="296.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Label>
+            <VBox prefHeight="49.0" prefWidth="208.0" style="-fx-background-color: #112233;">
+               <children>
+                  <Label text="Datos del evento seleccionado" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets left="12.0" top="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <Separator layoutY="101.0" prefHeight="3.0" prefWidth="208.0" />
+            <Separator layoutY="152.0" prefHeight="3.0" prefWidth="208.0" />
+            <Separator layoutY="206.0" prefHeight="3.0" prefWidth="208.0" />
+            <Separator layoutY="257.0" prefHeight="3.0" prefWidth="208.0" />
+            <Separator layoutY="48.0" prefHeight="3.0" prefWidth="208.0" />
          </children>
       </Pane>
-      <TextField fx:id="tfNumEntradas" layoutX="219.0" layoutY="112.0" />
-      <Label layoutX="219.0" layoutY="94.0" text="Número de entradas" />
-      <Label layoutX="219.0" layoutY="164.0" text="Localidad" />
-      <Button layoutX="343.0" layoutY="338.0" mnemonicParsing="false" onAction="#realizarCompra" text="Pagar" />
-      <ComboBox layoutX="219.0" layoutY="182.0" prefWidth="150.0" />
+      <TextField fx:id="tfNumEntradas" layoutX="316.0" layoutY="154.0" prefHeight="25.0" prefWidth="172.0" />
+      <Label layoutX="289.0" layoutY="110.0" text="Número de entradas" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label layoutX="345.0" layoutY="200.0" text="Localidad" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Button layoutX="337.0" layoutY="303.0" mnemonicParsing="false" onAction="#realizarCompra" prefHeight="25.0" prefWidth="124.0" style="-fx-background-color: #112233;" text="Pagar" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
+      <ComboBox layoutX="315.0" layoutY="244.0" prefHeight="25.0" prefWidth="172.0" />
    </children>
 </AnchorPane>
