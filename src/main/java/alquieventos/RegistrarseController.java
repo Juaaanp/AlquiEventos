@@ -28,7 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
-public class RegistrarseController implements Initializable, Serializable {
+public class RegistrarseController extends SerializacionTemplate implements Initializable, Serializable {
 
     @FXML
     private AnchorPane Bg;
@@ -82,7 +82,7 @@ public class RegistrarseController implements Initializable, Serializable {
                 if (numeroTelField.getText().length() == 10) {
                     listaClientes.add(new Cliente(nombreField.getText(), cedulaField.getText(),
                             numeroTelField.getText(), correoField.getText(), contraseñaField.getText()));
-                    guardarDatos();
+                    serializar();
                     loadStage("/alquieventos/codigoVerificacion.fxml", event);
                 } else {
                     System.err.println("el número de teléfono debe tener 10 digitos");
@@ -110,7 +110,18 @@ public class RegistrarseController implements Initializable, Serializable {
         }
     }
 
-    public void guardarDatos() {
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        deserializar();
+
+    }
+
+    public ArrayList<Cliente> getlistaClientes(){
+        return listaClientes;
+    }
+
+    @Override
+    public void serializar() {
         try {
             FileOutputStream fileOut = new FileOutputStream("ListaClientes.txt");
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
@@ -125,7 +136,8 @@ public class RegistrarseController implements Initializable, Serializable {
     }
 
     @SuppressWarnings("unchecked")
-    public void cargarDatos() {
+    @Override
+    public void deserializar() {
         try {
             FileInputStream fileIn = new FileInputStream("ListaClientes.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -140,15 +152,5 @@ public class RegistrarseController implements Initializable, Serializable {
             System.out.println("La clase Cliente no se encontró");
             c.printStackTrace();
         }
-    }
-
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        cargarDatos();
-
-    }
-
-    public ArrayList<Cliente> getlistaClientes(){
-        return listaClientes;
     }
 }

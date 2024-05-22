@@ -21,15 +21,6 @@ public class Cliente extends Persona  {
     //Constructor vacío
     public Cliente(){}
 
-    @Override
-    public void loguear() {
-        
-    }
-    
-    public void registrarse(){
-
-    }
-
     // Realizar compra si se cumplen las siguientes validaciones: 
     //la fecha de la factura es antes a la fecha del dia del evento.
 

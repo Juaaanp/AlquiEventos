@@ -31,7 +31,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class AdminController implements Initializable, Serializable {
+public class AdminController extends SerializacionTemplate implements Initializable, Serializable {
 
     @FXML
     private Button agregarEvento;
@@ -117,7 +117,7 @@ public class AdminController implements Initializable, Serializable {
 
             if (!this.eventos.contains(evento)) {
                 this.eventos.add(evento);
-                guardarEventos();
+                serializar();
                 this.tblEventos.setItems(eventos);
                 localidades.clear();
             } else {
@@ -170,7 +170,7 @@ public class AdminController implements Initializable, Serializable {
         this.colLocalidad.setCellValueFactory(new PropertyValueFactory<>("localidadesAsString"));
 
         localidades = FXCollections.observableArrayList();
-        cargarEventos();
+        deserializar();
     }
 
     @FXML
@@ -218,7 +218,7 @@ public class AdminController implements Initializable, Serializable {
                 e.setFecha(fecha);
                 e.setDireccion(direccion);
                 this.tblEventos.refresh();
-                guardarEventos();
+                serializar();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
@@ -244,7 +244,8 @@ public class AdminController implements Initializable, Serializable {
         }
     }
 
-    public void guardarEventos() {
+    @Override
+    public void serializar() {
         try {
             FileOutputStream fileOut = new FileOutputStream("EstadoListaEventos.txt");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -257,7 +258,8 @@ public class AdminController implements Initializable, Serializable {
     }
 
     @SuppressWarnings("unchecked")
-    public void cargarEventos() {
+    @Override
+    public void deserializar() {
         try {
             FileInputStream fileIn = new FileInputStream("EstadoListaEventos.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);

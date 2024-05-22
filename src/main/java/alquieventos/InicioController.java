@@ -27,7 +27,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -191,13 +190,13 @@ public class InicioController implements Initializable {
         eventos = FXCollections.observableArrayList();
         filtroEventos = FXCollections.observableArrayList();
 
-        cargarEventos();
+        deserializar();
 
         si();
     }
 
     @SuppressWarnings("unchecked")
-    public void cargarEventos() {
+    public void deserializar() {
         try {
             FileInputStream fileIn = new FileInputStream("EstadoListaEventos.txt");
             ObjectInputStream in = new ObjectInputStream(fileIn);

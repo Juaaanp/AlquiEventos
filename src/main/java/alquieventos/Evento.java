@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Evento implements Serializable{
     private String nombre;
-    private String city;
+    private String ciudad;
     private String descripcion;
     private TipoEvento tipoEvento;
     private String imagen;
@@ -21,7 +21,7 @@ public class Evento implements Serializable{
     // Constructor con argumentos.
     public Evento(String nombre, String city, String descripcion, TipoEvento tipo, LocalDate fecha, String direccion, ArrayList<Localidad> localidades){
         this.nombre = nombre;
-        this.city = city;
+        this.ciudad = city;
         this.descripcion = descripcion;
         this.tipoEvento = tipo;
         this.fecha = fecha;
@@ -80,11 +80,19 @@ public class Evento implements Serializable{
 
     
     public String getCity() {
-        return city;
+        return ciudad;
     }
 
     public void setCity(String city) {
-        this.city = city;
+        this.ciudad = city;
+    }
+
+    public ArrayList<Localidad> getLocalidades() {
+        return localidades;
+    }
+
+    public void setLocalidades(ArrayList<Localidad> localidades) {
+        this.localidades = localidades;
     }
 
     public String getLocalidadesAsString() {
@@ -101,7 +109,7 @@ public class Evento implements Serializable{
         if (o == null || getClass() != o.getClass()) return false;
         Evento evento = (Evento) o;
         return Objects.equals(nombre, evento.nombre) &&
-                Objects.equals(city, evento.city) &&
+                Objects.equals(ciudad, evento.ciudad) &&
                 Objects.equals(descripcion, evento.descripcion) &&
                 tipoEvento == evento.tipoEvento &&
                 Objects.equals(fecha, evento.fecha) &&
@@ -110,7 +118,7 @@ public class Evento implements Serializable{
 
     @Override
     public int hashCode() {
-        return Objects.hash(nombre, city, descripcion, tipoEvento, fecha, direccion);
+        return Objects.hash(nombre, ciudad, descripcion, tipoEvento, fecha, direccion);
     }
     public double calcularRecaudacion(){
         double recaudacion = 0.0;
@@ -119,15 +127,5 @@ public class Evento implements Serializable{
         }
         return recaudacion;
     }
-
-    public ArrayList<Localidad> getLocalidades() {
-        return localidades;
-    }
-
-    public void setLocalidades(ArrayList<Localidad> localidades) {
-        this.localidades = localidades;
-    }
-
-    //}
 }
 

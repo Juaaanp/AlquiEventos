@@ -127,7 +127,7 @@ public class WelcomeController {
     @FXML
     private boolean permitirAcceso(){
         RegistrarseController registroClientes = new RegistrarseController();
-        registroClientes.cargarDatos();
+        registroClientes.deserializar();
         ArrayList<Cliente> listaClientes = registroClientes.getlistaClientes();
         for (int i = 0; i < listaClientes.size(); i++){
             if (listaClientes.get(i).getEmail().equalsIgnoreCase(correoTF.getText()) && listaClientes.get(i).getContraseña().equals(contraseñaPF.getText())) {

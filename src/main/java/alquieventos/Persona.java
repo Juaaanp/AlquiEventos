@@ -60,6 +60,4 @@ public abstract class Persona implements Serializable {
    public void setContraseña(String contraseña) {
       this.contraseña = contraseña;
    }
-
-   public abstract void loguear();
-   }
+}

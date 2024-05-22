@@ -4,35 +4,42 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class Admin extends Persona {
+public class Admin {
+    private static Admin instancia;
     private List<Evento> eventos = new ArrayList<>();
+    private String email;
+    private String contraseña;
 
-    //Constructor heredado.
-    public Admin(String nombre, String cedula, String numTelefono, String email, String contraseña) {
-        super(nombre, cedula, numTelefono, email, contraseña);
+    private Admin() {
+        this.email = "admin@unieventos.com";
+        this.contraseña = "admin123";
     }
 
-    @Override
-    public void loguear(){
-        
+    public static Admin getInstancia() {
+        if (instancia == null) {
+            instancia = new Admin();
+        }
+        return instancia;
     }
 
-    public void gestionarEventos(){
-
-    }
-
-    public Cupon crearCupon(LocalDate fechaEspecial, double porcentaje){
+    public Cupon crearCupon(double porcentaje) {
         return new Cupon(porcentaje);
     }
 
-    public void obtenerEstadisticas(){
+    public void obtenerEstadisticas() {
 
     }
 
-    //public Collection<Evento> listarEventosMayorRecaudacion(){
-        
-      //  return eventos.stream()
-    //}
-    
+    public List<Evento> getEventos() {
+        return eventos;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
 }
