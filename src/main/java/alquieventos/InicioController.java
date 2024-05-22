@@ -19,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -27,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -35,10 +37,6 @@ public class InicioController implements Initializable {
     @SuppressWarnings("rawtypes")
     @FXML
     private TableColumn colCiudad;
-
-    @SuppressWarnings("rawtypes")
-    @FXML
-    private TableColumn colComprar;
 
     @SuppressWarnings("rawtypes")
     @FXML
@@ -72,6 +70,10 @@ public class InicioController implements Initializable {
     private ObservableList<Evento> filtroEventos;
 
     private Evento eventoSeleccionado;
+
+    public Evento getEventoSeleccionado() {
+        return eventoSeleccionado;
+    }
 
     @FXML
     void filtrarCiudad(KeyEvent event) {
@@ -107,15 +109,14 @@ public class InicioController implements Initializable {
         }
     }
 
-    @FXML
-    void filtrarTipo(ContextMenuEvent event) {
-        TipoEvento filtroTipo = (TipoEvento) this.combFiltrarTipo.getSelectionModel().getSelectedItem();
-        if(filtroTipo == TipoEvento.TODOS){
+    //@FXML
+    private void filtrarTipo(TipoEvento filtroTipo) {
+        if (filtroTipo == TipoEvento.TODOS) {
             this.tblEventos.setItems(eventos);
-        }else {
+        } else {
             this.filtroEventos.clear();
-            for(Evento e: this.eventos){
-                if(e.getTipoEvento() == (filtroTipo)){
+            for (Evento e : this.eventos) {
+                if (e.getTipoEvento() == filtroTipo) {
                     this.filtroEventos.add(e);
                 }
             }
@@ -131,10 +132,16 @@ public class InicioController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Error");
+            alert.setContentText("Debes seleccionar un evento");
+            alert.showAndWait();
         }
     }
 
-    public void si(){
+    public void seleccionarFila(){//Selecciona el evento de la fila seleccionada
         tblEventos.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Evento>() {
             @Override
             public void changed(ObservableValue<? extends Evento> observable, Evento oldValue, Evento newValue) {
@@ -148,7 +155,7 @@ public class InicioController implements Initializable {
     }
 
     private void abrirVentanaDetalles(Evento evento) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("pago.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/alquieventos/pago.fxml"));
         Parent root = loader.load();
 
         PagoController pagoController = loader.getController();
@@ -159,6 +166,7 @@ public class InicioController implements Initializable {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
     @FXML
     private void loadStage(String url, Event event){
         try {
@@ -180,6 +188,13 @@ public class InicioController implements Initializable {
         ObservableList<TipoEvento> list = FXCollections.observableArrayList(TipoEvento.values());
         combFiltrarTipo.setItems(list);
 
+        combFiltrarTipo.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TipoEvento>() {
+            @Override//Añade una accion al seleccionar un item del comb box
+            public void changed(ObservableValue<? extends TipoEvento> observable, TipoEvento oldValue, TipoEvento newValue) {
+                filtrarTipo(newValue);
+            }
+        });
+
         this.tblEventos.setItems(eventos);
 
         this.colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -192,7 +207,7 @@ public class InicioController implements Initializable {
 
         deserializar();
 
-        si();
+        seleccionarFila();
     }
 
     @SuppressWarnings("unchecked")

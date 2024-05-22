@@ -30,13 +30,13 @@
       <Label layoutX="207.0" layoutY="14.0" prefHeight="18.0" prefWidth="44.0" text="Ciudad" textFill="WHITE" />
       <Label layoutX="383.0" layoutY="14.0" text="Descripción" textFill="WHITE" />
       <Label layoutX="383.0" layoutY="77.0" text="Dirección" textFill="WHITE" />
-      <Button fx:id="agregarEvento" layoutX="112.0" layoutY="361.0" mnemonicParsing="false" onAction="#agregarEvento" style="-fx-background-color: #112233;" text="Agregar Evento" textFill="#fdfdfd" />
+      <Button fx:id="agregarEvento" layoutX="50.0" layoutY="361.0" mnemonicParsing="false" onAction="#agregarEvento" style="-fx-background-color: #112233;" text="Agregar Evento" textFill="#fdfdfd" />
       <ComboBox fx:id="combTipo" layoutX="37.0" layoutY="94.0" prefWidth="150.0" promptText="TipoEvento" />
       <DatePicker fx:id="tfFecha" layoutX="205.0" layoutY="94.0" prefHeight="25.0" prefWidth="150.0" />
       <Label layoutX="38.0" layoutY="78.0" text="Tipo" textFill="WHITE" />
       <Label layoutX="206.0" layoutY="78.0" text="Fecha" textFill="WHITE" />
-      <Button fx:id="eliminar" layoutX="407.0" layoutY="361.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-color: #112233;" text="Eliminar" textFill="WHITE" />
-      <Button fx:id="modificar" layoutX="278.0" layoutY="361.0" mnemonicParsing="false" onAction="#modificar" style="-fx-background-color: #112233;" text="Modificar" textFill="WHITE" />
-      <Button layoutX="479.0" layoutY="361.0" mnemonicParsing="false" onAction="#agregarLocalidad" text="AgregarLocalidad" />
+      <Button fx:id="eliminar" layoutX="288.0" layoutY="361.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #112233;" text="Eliminar" textFill="WHITE" />
+      <Button fx:id="modificar" layoutX="172.0" layoutY="361.0" mnemonicParsing="false" onAction="#modificar" prefHeight="26.0" prefWidth="98.0" style="-fx-background-color: #112233;" text="Modificar" textFill="WHITE" />
+      <Button layoutX="445.0" layoutY="361.0" mnemonicParsing="false" onAction="#agregarLocalidad" style="-fx-background-color: white;" text="AgregarLocalidad" />
    </children>
 </AnchorPane>

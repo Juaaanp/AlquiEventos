@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="alquieventos.PagoController">
+   <children>
+      <Pane layoutX="-6.0" prefHeight="45.0" prefWidth="610.0" style="-fx-background-color: blue;">
+         <children>
+            <Label layoutX="14.0" layoutY="-2.0" text="Comprar Entrada" textFill="WHITE">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutY="46.0" prefHeight="355.0" prefWidth="159.0" style="-fx-background-color: d3d3d3;">
+         <children>
+            <Label layoutX="7.0" layoutY="24.0" text="Evento" />
+            <Label fx:id="lEvento" layoutX="11.0" layoutY="41.0" text="Label" />
+            <Label layoutX="11.0" layoutY="72.0" text="Tipo de Evento" />
+            <Label fx:id="lTipoEvento" layoutX="11.0" layoutY="89.0" text="Label" />
+            <Label layoutX="13.0" layoutY="127.0" text="Ciudad" />
+            <Label fx:id="lCiudad" layoutX="11.0" layoutY="144.0" text="Label" />
+            <Label layoutX="11.0" layoutY="178.0" text="Fecha" />
+            <Label fx:id="lFecha" layoutX="11.0" layoutY="195.0" text="Label" />
+            <Label layoutX="11.0" layoutY="224.0" text="Descripción" />
+            <Label fx:id="lDescripcion" layoutX="11.0" layoutY="241.0" text="Label" />
+         </children>
+      </Pane>
+      <TextField fx:id="tfNumEntradas" layoutX="219.0" layoutY="112.0" />
+      <Label layoutX="219.0" layoutY="94.0" text="Número de entradas" />
+      <Label layoutX="219.0" layoutY="164.0" text="Localidad" />
+      <Button layoutX="343.0" layoutY="338.0" mnemonicParsing="false" onAction="#realizarCompra" text="Pagar" />
+      <ComboBox layoutX="219.0" layoutY="182.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>

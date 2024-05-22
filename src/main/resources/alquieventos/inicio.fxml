@@ -17,11 +17,10 @@
    <children>
       <TableView fx:id="tblEventos" layoutX="167.0" layoutY="98.0" prefHeight="252.0" prefWidth="401.0" style="-fx-background-color: #FFFFFF;">
         <columns>
-          <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
-          <TableColumn fx:id="colTipo" prefWidth="75.0" text="Tipo" />
-            <TableColumn fx:id="colCiudad" prefWidth="75.0" text="Ciudad" />
-            <TableColumn fx:id="colFecha" prefWidth="75.0" text="Fecha" />
-            <TableColumn fx:id="colComprar" prefWidth="99.0" text="Comprar" />
+          <TableColumn fx:id="colNombre" prefWidth="120.79998779296875" text="Nombre" />
+          <TableColumn fx:id="colTipo" prefWidth="102.4000244140625" text="Tipo" />
+            <TableColumn fx:id="colCiudad" prefWidth="97.5999755859375" text="Ciudad" />
+            <TableColumn fx:id="colFecha" prefWidth="81.59991455078125" text="Fecha" />
         </columns>
       </TableView>
       <Button fx:id="comprar" layoutX="318.0" layoutY="361.0" mnemonicParsing="false" onAction="#comprarBoleto" style="-fx-background-color: #0085fa;" text="Comprar Boleto" textFill="#112233" />
@@ -45,7 +44,7 @@
                      <children>
                         <TextField fx:id="tfFiltrarNombre" layoutX="6.0" layoutY="39.0" onKeyReleased="#filtrarNombre" prefHeight="25.0" prefWidth="107.0" />
                         <Label layoutX="7.0" layoutY="14.0" text="Buscar por nombre" textFill="#112233" />
-                        <ComboBox fx:id="combFiltrarTipo" layoutX="8.0" layoutY="111.0" onContextMenuRequested="#filtrarTipo" prefHeight="25.0" prefWidth="109.0" promptText="Tipo" />
+                        <ComboBox fx:id="combFiltrarTipo" layoutX="8.0" layoutY="111.0" prefHeight="25.0" prefWidth="109.0" promptText="Tipo" />
                         <Label layoutX="8.0" layoutY="87.0" text="Por Tipo" textFill="#112233" />
                         <TextField fx:id="tfFiltrarCiudad" layoutX="8.0" layoutY="198.0" onKeyReleased="#filtrarCiudad" prefHeight="25.0" prefWidth="110.0" />
                         <Label layoutX="8.0" layoutY="172.0" text="Por Ciudad" textFill="#112233" />

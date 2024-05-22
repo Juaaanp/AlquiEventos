@@ -157,6 +157,8 @@ public class AdminController extends SerializacionTemplate implements Initializa
     @SuppressWarnings("unchecked")
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        Admin.getInstancia();
+
         ObservableList<TipoEvento> list = FXCollections.observableArrayList(TipoEvento.values());
         combTipo.setItems(list);
 
@@ -175,7 +177,7 @@ public class AdminController extends SerializacionTemplate implements Initializa
 
     @FXML
     void eliminar(ActionEvent event) {
-        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();// Devuelve la persona que seleccionemos
+        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();// Devuelve el evento que seleccionemos
 
         if (e == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -191,7 +193,7 @@ public class AdminController extends SerializacionTemplate implements Initializa
 
     @FXML
     void modificar(ActionEvent event) {
-        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();// Devuelve la persona que seleccionemos
+        Evento e = this.tblEventos.getSelectionModel().getSelectedItem();// Devuelve el evento que seleccionemos
 
         if (e == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

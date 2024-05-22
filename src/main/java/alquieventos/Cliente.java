@@ -3,6 +3,7 @@ package alquieventos;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import javafx.scene.control.Alert;
@@ -47,20 +48,28 @@ public class Cliente extends Persona  {
     // si cumple estas dos condiciones el método procede a recorrer la lista de compras y remover la compra que coincida
     // con las caracteristicas de la compra que el cliente desea eliminar. Si la lista está vacía imprime un mensaje por pantalla.
 
-    public void cancelarCompra(Compra compra){
-        if (compras.size() > 0) {
+
+    public void cancelarCompra(Compra compra) {
+        if (!compras.isEmpty()) {
             if (compra.getFactura().getFecha().isBefore(compra.getEvento().getFecha())) {
-                for (Compra c : compras) {
+                Iterator<Compra> iterator = compras.iterator();
+                while (iterator.hasNext()) {
+                    Compra c = iterator.next();
                     if (c.equals(compra)) {
-                        compras.remove(compra);
+                        iterator.remove();
+                        System.out.println("La compra ha sido cancelada exitosamente.");
+                        return; // Exit the method once the compra is found and removed
                     }
                 }
+                System.out.println("La compra no está registrada en la lista de compras, no se ha podido cancelar su compra.");
+            } else {
+                System.out.println("No se puede cancelar la compra porque la fecha de la factura no es anterior a la fecha del evento.");
             }
-        }
-        else{
-            System.out.println("La compra no está registrada en la lista de compras, no se ha podido cancelar su compra.");
+        } else {
+            System.out.println("La lista de compras está vacía, no se ha podido cancelar su compra.");
         }
     }
+    
     public Compra redimirCupones(Cupon cupon, Compra compra){
        double sumaCupones = compra.getCupon().getDescuento() + cupon.getDescuento();
        double descuentoSubtotal = compra.getFactura().getSubTotal()-(compra.getFactura().getSubTotal()*sumaCupones);
